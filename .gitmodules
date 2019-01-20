@@ -1,0 +1,3 @@
+[submodule "lib/libpololu-avr"]
+	path = lib/libpololu-avr
+	url = https://github.com/pololu/libpololu-avr
