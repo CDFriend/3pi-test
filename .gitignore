@@ -1,3 +1,6 @@
 # C build files
 *.a
 *.o
+
+# Visual studio code
+.vscode
