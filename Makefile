@@ -3,12 +3,13 @@ AVR_ARCH=atmega328p
 BUILD_DIR=build
 
 LIBPOLOLU_DIR=./lib/libpololu-avr
+LIBPOLOLU_ARCH_DIR=$(LIBPOLOLU_DIR)/devices/$(AVR_ARCH)
 
-all: libpololu
+all: $(BUILD_DIR)/lib/libpololu.a
 
-libpololu: $(BUILD_DIR)/lib
-	make -C $(LIBPOLOLU_DIR)/devices/$(AVR_ARCH)
-	cp $(LIBPOLOLU_DIR)/devices/$(AVR_ARCH)/libpololu_$(AVR_ARCH.a) $(BUILD_DIR)/lib
+$(BUILD_DIR)/lib/libpololu.a: $(BUILD_DIR)/lib
+	make -C $(LIBPOLOLU_ARCH_DIR)
+	cp $(LIBPOLOLU_DIR)/libpololu_$(AVR_ARCH).a $@
 
-BUILD_DIR/%:
-	mkdir -p $<
+$(BUILD_DIR)/%:
+	mkdir -p $@
